@@ -61,10 +61,10 @@ const SERVICES = [
 ];
 
 const GALLERY = [
-  { src: "/images/hero.png", title: "Corte Fade Clasico", tall: true },
-  { src: "/images/feature.png", title: "Afeitado a Navaja", tall: false },
-  { src: "/images/feature.png", title: "Diseño de Barba", tall: false },
-  { src: "/images/hero.png", title: "Estilo Pompadour", tall: true },
+  { src: "/images/hero.png", title: "Corte Fade Clasico" },
+  { src: "/images/feature.png", title: "Afeitado a Navaja" },
+  { src: "/images/feature.png", title: "Diseño de Barba" },
+  { src: "/images/hero.png", title: "Estilo Pompadour" },
 ];
 
 const TESTIMONIALS = [
@@ -138,7 +138,7 @@ export default function Home() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#F5F3F0", fontFamily: "Inter, sans-serif" }}>
       {/* NAV */}
-      <nav className="fixed top-0 left-0 right-0 z-50" style={{ backgroundColor: "#1A1A1A" }}>
+      <nav className="fixed top-0 left-0 right-0 z-50" style={{ backgroundColor: "rgba(26, 26, 26, 0.85)", backdropFilter: "blur(8px)" }}>
         <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between h-20">
           <div>
             <p
@@ -192,7 +192,7 @@ export default function Home() {
           className={`lg:hidden overflow-hidden transition-all duration-500 ${
             menuOpen ? "max-h-96" : "max-h-0"
           }`}
-          style={{ backgroundColor: "#1A1A1A" }}
+          style={{ backgroundColor: "rgba(26, 26, 26, 0.95)" }}
         >
           <div className="flex flex-col gap-5 px-6 pb-6">
             {NAV_LINKS.map((link) => (
@@ -329,31 +329,33 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-6">
+          <div className="flex flex-col md:flex-row gap-6">
             {SERVICES.map((service) => (
               <Card
                 key={service.name}
-                className="rounded-none border p-6 hover:shadow-lg transition-shadow"
+                className="rounded-none border p-6 hover:shadow-lg transition-shadow flex-1 flex items-start gap-5"
                 style={{ borderColor: "#8B6F47", backgroundColor: "#F5F3F0" }}
               >
                 <div
-                  className="w-14 h-14 rounded-full border flex items-center justify-center mb-5"
+                  className="w-14 h-14 rounded-full border flex items-center justify-center flex-shrink-0"
                   style={{ borderColor: "#8B6F47" }}
                 >
                   <service.icon size={24} style={{ color: "#8B6F47" }} />
                 </div>
-                <h3
-                  className="text-sm font-bold tracking-widest mb-3"
-                  style={{ fontFamily: "Montserrat, sans-serif", color: "#1A1A1A" }}
-                >
-                  {service.name}
-                </h3>
-                <p className="text-sm mb-4" style={{ color: "#666666" }}>
-                  {service.desc}
-                </p>
-                <p className="font-bold text-lg" style={{ color: "#1A1A1A" }}>
-                  {service.price}
-                </p>
+                <div>
+                  <h3
+                    className="text-sm font-bold tracking-widest mb-3"
+                    style={{ fontFamily: "Montserrat, sans-serif", color: "#1A1A1A" }}
+                  >
+                    {service.name}
+                  </h3>
+                  <p className="text-sm mb-4" style={{ color: "#666666" }}>
+                    {service.desc}
+                  </p>
+                  <p className="font-bold text-lg" style={{ color: "#1A1A1A" }}>
+                    {service.price}
+                  </p>
+                </div>
               </Card>
             ))}
           </div>
@@ -380,9 +382,7 @@ export default function Home() {
             {GALLERY.map((item, i) => (
               <div
                 key={i}
-                className={`relative group overflow-hidden ${
-                  item.tall ? "row-span-2 h-[420px]" : "h-[200px] md:h-[420px]"
-                }`}
+                className="relative group overflow-hidden h-[250px] md:h-[300px]"
               >
                 <Image
                   src={item.src}
