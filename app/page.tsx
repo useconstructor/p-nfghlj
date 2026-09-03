@@ -220,7 +220,7 @@ export default function Home() {
       {/* HERO */}
       <section
         id="home"
-        className="pt-20 grid md:grid-cols-2"
+        className="pt-20 min-h-screen grid md:grid-cols-2"
         style={{
           background: "linear-gradient(135deg, #1A1A1A 0%, #2C2C2C 60%, #1A1A1A 100%)",
         }}
@@ -233,7 +233,7 @@ export default function Home() {
             </span>
           </div>
           <h1
-            className="text-5xl md:text-6xl font-bold text-white leading-tight uppercase"
+            className="text-5xl md:text-7xl font-black text-white leading-none uppercase tracking-tight"
             style={{ fontFamily: "Montserrat, sans-serif" }}
           >
             CORTES DE
@@ -241,7 +241,7 @@ export default function Home() {
             PRECISION.
           </h1>
           <h1
-            className="text-5xl md:text-6xl font-bold leading-tight uppercase mb-6"
+            className="text-5xl md:text-7xl font-black leading-none uppercase mb-6 tracking-tight"
             style={{ fontFamily: "Montserrat, sans-serif", color: "#8B6F47" }}
           >
             ESTILO
@@ -264,7 +264,7 @@ export default function Home() {
             </Button>
           </a>
         </div>
-        <div className="relative min-h-[420px]">
+        <div className="relative min-h-[500px] md:min-h-full">
           <Image
             src="/images/hero.png"
             alt="Barbero trabajando en un corte de precision"
@@ -276,7 +276,7 @@ export default function Home() {
       </section>
 
       {/* STATS BANNER */}
-      <section style={{ backgroundColor: "#2C2C2C" }} className="py-10">
+      <section style={{ backgroundColor: "#0D1B2A" }} className="py-12">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
             { icon: Scissors, value: "2.500+", label: "CLIENTES SATISFECHOS" },
@@ -285,10 +285,15 @@ export default function Home() {
             { icon: Award, value: "PREMIUM", label: "PRODUCTOS UNICAMENTE" },
           ].map((stat, i) => (
             <div key={i} className="flex items-center gap-4">
-              <stat.icon size={30} style={{ color: "#8B6F47" }} />
+              <div
+                className="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0"
+                style={{ backgroundColor: "rgba(139, 111, 71, 0.15)", border: "1px solid rgba(139, 111, 71, 0.3)" }}
+              >
+                <stat.icon size={24} style={{ color: "#8B6F47" }} />
+              </div>
               <div>
                 <p
-                  className="text-2xl md:text-3xl font-bold text-white"
+                  className="text-2xl md:text-3xl font-extrabold text-white"
                   style={{ fontFamily: "Montserrat, sans-serif" }}
                 >
                   {stat.value}
@@ -301,7 +306,7 @@ export default function Home() {
       </section>
 
       {/* SERVICES */}
-      <section id="servicios" className="py-24 px-6 md:px-16">
+      <section id="servicios" className="py-24 px-6 md:px-16" style={{ backgroundColor: "#1A1A1A" }}>
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
             <div>
@@ -312,8 +317,8 @@ export default function Home() {
                 </span>
               </div>
               <h2
-                className="text-3xl md:text-4xl font-bold uppercase"
-                style={{ fontFamily: "Montserrat, sans-serif", color: "#1A1A1A" }}
+                className="text-3xl md:text-4xl font-extrabold uppercase text-white"
+                style={{ fontFamily: "Montserrat, sans-serif" }}
               >
                 SERVICIO EXPERTO. SIEMPRE.
               </h2>
@@ -329,41 +334,39 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {SERVICES.map((service) => (
               <Card
                 key={service.name}
-                className="rounded-none border p-6 hover:shadow-lg transition-shadow flex-1 flex items-start gap-5"
-                style={{ borderColor: "#8B6F47", backgroundColor: "#F5F3F0" }}
+                className="rounded-none border-0 p-8 hover:shadow-lg transition-shadow flex flex-col items-center text-center"
+                style={{ backgroundColor: "#0D1B2A" }}
               >
                 <div
-                  className="w-14 h-14 rounded-full border flex items-center justify-center flex-shrink-0"
-                  style={{ borderColor: "#8B6F47" }}
+                  className="w-16 h-16 rounded-full flex items-center justify-center mb-5"
+                  style={{ backgroundColor: "#8B6F47" }}
                 >
-                  <service.icon size={24} style={{ color: "#8B6F47" }} />
+                  <service.icon size={28} style={{ color: "#0D1B2A" }} />
                 </div>
-                <div>
-                  <h3
-                    className="text-sm font-bold tracking-widest mb-3"
-                    style={{ fontFamily: "Montserrat, sans-serif", color: "#1A1A1A" }}
-                  >
-                    {service.name}
-                  </h3>
-                  <p className="text-sm mb-4" style={{ color: "#666666" }}>
-                    {service.desc}
-                  </p>
-                  <p className="font-bold text-lg" style={{ color: "#1A1A1A" }}>
-                    {service.price}
-                  </p>
-                </div>
+                <h3
+                  className="text-sm font-bold tracking-widest mb-3 text-white"
+                  style={{ fontFamily: "Montserrat, sans-serif" }}
+                >
+                  {service.name}
+                </h3>
+                <p className="text-sm mb-4" style={{ color: "#9CA3AF" }}>
+                  {service.desc}
+                </p>
+                <p className="font-bold text-lg" style={{ color: "#8B6F47" }}>
+                  {service.price}
+                </p>
               </Card>
             ))}
           </div>
         </div>
       </section>
 
-      {/* GALLERY MASONRY */}
-      <section id="galeria" className="py-24" style={{ backgroundColor: "#1A1A1A" }}>
+      {/* GALLERY */}
+      <section id="galeria" className="py-24" style={{ backgroundColor: "#F5F3F0" }}>
         <div className="max-w-7xl mx-auto px-6 md:px-16">
           <div className="flex items-center gap-2 mb-3">
             <span className="h-px w-8" style={{ backgroundColor: "#8B6F47" }} />
@@ -372,8 +375,8 @@ export default function Home() {
             </span>
           </div>
           <h2
-            className="text-3xl md:text-4xl font-bold uppercase text-white mb-12"
-            style={{ fontFamily: "Montserrat, sans-serif" }}
+            className="text-3xl md:text-4xl font-extrabold uppercase mb-12"
+            style={{ fontFamily: "Montserrat, sans-serif", color: "#1A1A1A" }}
           >
             HECHO PARA CABALLEROS
           </h2>
@@ -382,7 +385,7 @@ export default function Home() {
             {GALLERY.map((item, i) => (
               <div
                 key={i}
-                className="relative group overflow-hidden h-[250px] md:h-[300px]"
+                className="relative group overflow-hidden aspect-square"
               >
                 <Image
                   src={item.src}
@@ -390,7 +393,7 @@ export default function Home() {
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 flex items-end translate-y-full group-hover:translate-y-0 transition-transform duration-500 bg-black/60">
+                <div className="absolute inset-0 flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-black/80 to-transparent">
                   <p className="text-white text-xs tracking-widest p-4">{item.title}</p>
                 </div>
               </div>
