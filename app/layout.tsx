@@ -1,19 +1,18 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: "App",
-  description: "Built by Constructor",
+  title: 'Project 1788468750675',
+  description: 'A premium bilingual-Spanish barbershop website for Barbería El Corte in Buenos Aires, centered on appointment booking with portfolio galleries, service breakdowns, and trust-building social proof.',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="es">
-      <body>{children}</body>
+    <html lang="en">
+      <body style={{ backgroundColor: '#F5F3F0', margin: 0 }}>
+        {children}
+      </body>
     </html>
   );
 }
